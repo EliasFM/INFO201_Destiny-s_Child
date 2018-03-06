@@ -22,6 +22,19 @@ brand_vs_drug <- working_data %>%
   summarize(bene_count = sum(bene_count) , total_drug_cost = sum(dollarConv(total_drug_cost)), bene_count_ge65 = sum(bene_count_ge65), total_drug_cost_ge65 = sum(dollarConv(total_drug_cost_ge65))) %>%
   arrange(generic_name)
 
+silver_populations_city <- working_data %>%
+  select(nppes_provider_city, nppes_provider_state, bene_count, total_claim_count, total_day_supply, total_drug_cost, bene_count_ge65, total_claim_count_ge65, total_day_supply_ge65, total_drug_cost_ge65) %>%
+  group_by(nppes_provider_city, nppes_provider_state) %>%
+  summarise(bene_count = sum(bene_count) , total_claim_count = sum(total_claim_count), total_day_supply = sum(total_day_supply), total_drug_cost = sum(dollarConv(total_drug_cost)), bene_count_ge65 = sum(bene_count_ge65), total_claim_count_ge65 = sum(total_claim_count_ge65), total_day_supply_ge65 = sum(total_day_supply_ge65), total_drug_cost_ge65 = sum(dollarConv(total_drug_cost_ge65))) %>%
+  arrange(nppes_provider_state)
+
+silver_populations_state <- working_data %>%
+  select(nppes_provider_state, bene_count, total_claim_count, total_day_supply, total_drug_cost, bene_count_ge65, total_claim_count_ge65, total_day_supply_ge65, total_drug_cost_ge65) %>%
+  group_by(nppes_provider_state) %>%
+  summarise(bene_count = sum(bene_count) , total_claim_count = sum(total_claim_count), total_day_supply = sum(total_day_supply), total_drug_cost = sum(dollarConv(total_drug_cost)), bene_count_ge65 = sum(bene_count_ge65), total_claim_count_ge65 = sum(total_claim_count_ge65), total_day_supply_ge65 = sum(total_day_supply_ge65), total_drug_cost_ge65 = sum(dollarConv(total_drug_cost_ge65))) %>%
+  arrange(nppes_provider_state)
+
+
 #basic framework, needs to be completely cleared out and rewritten
 my.server <- function(input, output) {
   working_data <- fread("./Data/working_data.cv")

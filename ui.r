@@ -11,20 +11,21 @@ library(shiny)
 
 #needs to be redone, just for framework
 my.ui <- fluidPage(
-  
-  titlePanel("Name"),
-  
   sidebarLayout(
     
     sidebarPanel(
-      sliderInput("slide", label = h3("SlideName"), min = 0, 
-                  max = 100, value = c(0, 100)
+      
+      radioButtons("choice", label = h3("Plot Choice"),
+                   choices = c("Brand vs Generic" = 1, "State Utilization" = 2),
+                   selected = 1
       ),
       
       radioButtons("radio", label = h3("RadioName"),
-                   choices = list("1" = 1, "2" = 2, "3" = 3, "4" = 4), 
+                   choices = c("1" = 1, "2" = 2, "3" = 3, "4" = 4), 
                    selected = 1
       )
+      
+      
       
     ),
     
@@ -32,8 +33,34 @@ my.ui <- fluidPage(
       plotOutput("PlotName")
     )
   )
-  
-  
 )
 
-shinyUI(my.ui)
+my.ui2 <- fluidPage(
+  sidebarLayout(
+    
+    sidebarPanel(
+      
+      radioButtons("choice", label = h3("Silver"),
+                   choices = c("Brand vs Generic" = 1, "State Utilization" = 2),
+                   selected = 1
+      ),
+      
+      radioButtons("radio", label = h3("RadioName"),
+                   choices = c("1" = 1, "2" = 2, "3" = 3, "4" = 4), 
+                   selected = 1
+      )
+      
+      
+      
+    ),
+    
+    mainPanel(
+      plotOutput("PlotName")
+    )
+  )
+)
+
+shinyUI(navbarPage( "Medicare Utilization",
+                    tabPanel("Brand vs Generic", my.ui),
+                    tabPanel("State Utilization", my.ui2)
+))

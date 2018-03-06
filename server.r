@@ -13,7 +13,13 @@ library(shiny)
 # working_data <- data %>%
 #   select(nppes_provider_city, nppes_provider_state, drug_name, generic_name, bene_count, total_claim_count, total_day_supply, total_drug_cost, total_claim_count_ge65, total_day_supply_ge65, total_drug_cost_ge65, bene_count_ge65)
 # fwrite(working_data, "./Data/working_data.csv")
-
+dollarConv <- function(cost){
+  final <- as.numeric(gsub('[$,]', '', cost))
+}
+brand_vs_drug <- working_data %>%
+  select(drug_name, generic_name, bene_count, total_drug_cost, bene_count_ge65, total_drug_cost_ge65) %>%
+  group_by(drug_name, generic_name) %>%
+  summarize(bene_count = sum(bene_count) , total_drug_cost = sum(dollarConv(total_drug_cost)), bene_count_ge65 = sum(bene_count_ge65), total_drug_cost_ge65 = sum(dollarConv(total_drug_cost_ge65)))
 
 #basic framework, needs to be completely cleared out and rewritten
 my.server <- function(input, output) {

@@ -26,7 +26,7 @@ my.server <- function(input, output) {
     
     filtered_state <-
       fread(file = paste0('data/state/', input$state, '.csv'),
-               header = TRUE)
+            header = TRUE)
     return(as.data.frame(filtered_state))
   })
   
@@ -46,7 +46,7 @@ my.server <- function(input, output) {
       
       filtered_state <-
         fread(file = paste0('data/state/', input$state, '.csv'),
-                 header = TRUE)
+              header = TRUE)
       incProgress(0.75, detail = "Loaded data, sorting now")
       incProgress(0.9, detail = "Rendering plot")
       
@@ -90,8 +90,19 @@ my.server <- function(input, output) {
   
   #Second tab of visualization
   silver_state <- fread("./Data/silver_state.csv")
-  silver <- silver_state %>% arrange(desc(total_drug_cost))
-  silver$nppes_provider_state <- factor(silver$nppes_provider_state, levels = silver$nppes_provider_state[order(silver$total_drug_cost)])
+  
+  state_cost <- reactive({
+    if(input$sort == "alphabetical"){
+      silver <- silver_state
+    }else if(input$sort == "descending"){
+      silver <- silver_state %>% arrange(desc(total_drug_cost))
+      silver$nppes_provider_state <- factor(silver$nppes_provider_state, levels = silver$nppes_provider_state[order(silver$total_drug_cost)])
+    }else{
+      silver <- silver_state %>% arrange(total_drug_cost)
+      silver$nppes_provider_state <- factor(silver$nppes_provider_state, levels = silver$nppes_provider_state[order(silver$total_drug_cost)])
+    }
+    return(silver)
+  })
   
   output$compare <- renderPlot({
     ggplot(silver) + 

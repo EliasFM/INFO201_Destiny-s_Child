@@ -166,6 +166,9 @@ my.ui.background <- fluidPage(
     tags$li(
       a(href="https://www.ssa.gov/policy/docs/ssb/v70n3/v70n3p111.html", "The Future Financial Status of the Social Security Programs"))
   ),
+  h3("Source"),
+  p("The data was sourced from:", a(href = "https://data.cms.gov/Medicare-Part-D/Medicare-Provider-Utilization-and-Payment-Data-201/3z4d-vmhm",
+                                      "Center for Medicare and Medicade Services")),
   h3("Credits"),
   p('Bethany Johnson, Elias Mendel, Karissa Shapard, Kevin Zhang')
   

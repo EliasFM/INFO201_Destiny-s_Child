@@ -92,11 +92,7 @@ my.ui.state.drugs <- fluidPage(
   
   sidebarLayout(
     sidebarPanel(
-<<<<<<< HEAD
-        
 
-      
-=======
       selectInput("state", "State or territory:", states_dropdown),
       radioButtons("chart", "Select a format",
                    c("Chart" = "chart", "Table" = "table")),
@@ -115,16 +111,13 @@ my.ui.state.drugs <- fluidPage(
       
       width = 3,
       tableOutput("data")
->>>>>>> 821107525ceb9a45756995e22f383ceae5e67af0
+
     ),
     mainPanel(
-<<<<<<< HEAD
-      plotOutput("compare")
-=======
+
       conditionalPanel(condition = "input.chart == 'chart'",  plotOutput("drugstate")),
       conditionalPanel(condition = "input.chart == 'table'",  dataTableOutput('dt'))
-
->>>>>>> 821107525ceb9a45756995e22f383ceae5e67af0
+      
     )
   )
   

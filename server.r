@@ -38,11 +38,14 @@ my.server <- function(input, output) {
   var2 <- reactive({
     
   })
-  
 
+    
+    silver <- silver_populations_state$total_drug_cost %>% arrange_(sort)
+    
+  
   
   output$compare <- renderPlot(height = 600, width = 600, {
-    ggplot(silver_populations_state, aes(x = nppes_provider_state, y = total_drug_cost)) + geom_col() +
+    ggplot(silver, aes(x = nppes_provider_state, y = total_drug_cost)) + geom_col() +
         coord_flip() + labs(title = "Total Cost of Drugs per State", x = "Total Drug Cost", y = "State")
   })
   

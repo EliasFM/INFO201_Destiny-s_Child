@@ -71,10 +71,9 @@ my.ui.state.drugs <- fluidPage(
   
   ## State Generic Drug Usage
   h3('State Generic Drug Usage'),
-  p("This visualization helps policymakers understand the most commonly used drugs in a given state. Through this,
-  policymakers can compare which drugs are most commonly used to the costs imposed by these said drugs. This can help 
-  policymakers better understand which drugs burden the Medicare social security program most heavily so they may focus on those drugs as 
-  part of their policy reform"),
+  p("This visualization helps drug advertisers understand the most commonly used drugs in a given state via Medicare. Through this,
+  advertisers can choose which drugs to focus on when marketing to the target audience. Because it is a Medicare data set, the target audience in this case would 
+    be the over 65 population in each state as those are the qualifications for Medicare health insurance. Drug manufacturers can determine which drugs are in demand for each state."),
   
   sidebarLayout(
     sidebarPanel(
@@ -114,8 +113,11 @@ my.ui.state.money <- fluidPage(
   
   h3("State Monetary Utilization"),
   p("This visualization further emphasizes the total costs of drugs on Medicare by state.
-  By comparing this information to population size and drugs used most commonly, policymakers can assess where funds are being used efficently
-on a state level and use this information to develop effective future reforms for Medicare."),
+  By comparing this information to population size and drugs used most commonly, policymakers can assess where funds are being used efficiently
+on a state level and use this information to develop effective future reforms for Medicare. By visualizing the data, we can see large differences between.
+    The inference we can draw from this graph is which states bear the biggest burden on the Medicare system. From the graph, we can see California, New York, Florida
+    and Texas impose the biggest costs on the Medicare health insurance. We can assume then that policymakers in these states have a vested interest in maintaining the current Medicare system
+    in order to appeal to its constituents and therefore may be most opposed to reforming Medicare."),
   sidebarLayout(
     sidebarPanel(
       radioButtons("sorted", "Sort By",

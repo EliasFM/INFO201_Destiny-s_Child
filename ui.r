@@ -155,6 +155,13 @@ my.ui.background <- fluidPage(
     tags$li(
       a(href="https://www.ssa.gov/policy/docs/ssb/v70n3/v70n3p111.html", "The Future Financial Status of the Social Security Programs"))
   ),
+  
+  h3("Takeaway for Future Analysis"),
+  p("Based on the visualizations, there are several ways in which the data could be utilized more meaningfully for future cases. By comparing the population size of Medicare beneficiaries to total drug cost,
+     poicymakers can better understand the costs imposed per person in a given state, region or city. This would help policymakers focus in on efficient reform for the program through a public health lens. Furthermore,
+    claim count compared to rates of diseases could reflect which states are most unhealthy or which states prescribe drugs more liberally. Applying the Medicare data in cross-comparative analyses with relevant population, health
+    age, gender, racial or even economic status would help policymakers and manufacturers better understand and appeal to their audiences/constituents."),
+  
   h3("Credits"),
   p('Bethany Johnson, Elias Mendel, Karissa Shapard, Kevin Zhang')
   

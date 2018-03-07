@@ -66,12 +66,12 @@ states_dropdown <-
 
 my.ui.state.drugs <- fluidPage(
   
-
   
-
-## State Generic Drug Usage
-h3('State Generic Drug Usage'),
-p("This visualization helps policymakers understand the most commonly used drugs in a given state. Through this,
+  
+  
+  ## State Generic Drug Usage
+  h3('State Generic Drug Usage'),
+  p("This visualization helps policymakers understand the most commonly used drugs in a given state. Through this,
   policymakers can compare which drugs are most commonly used to the costs imposed by these said drugs. This can help 
   policymakers better understand which drugs burden the Medicare social security program most heavily so they may focus on those drugs as 
   part of their policy reform"),
@@ -100,7 +100,7 @@ p("This visualization helps policymakers understand the most commonly used drugs
     mainPanel(
       conditionalPanel(condition = "input.chart == 'chart'",  plotOutput("drugstate")),
       conditionalPanel(condition = "input.chart == 'table'",  dataTableOutput('dt'))
-
+      
     )
   )
   
@@ -109,15 +109,23 @@ p("This visualization helps policymakers understand the most commonly used drugs
 
 
 my.ui.state.money <- fluidPage(
-
+  
   ##State Monetary Utilization
-
-h3("State Monetary Utilization"),
-p("This visualization further emphasizes the total costs of drugs on Medicare by state.
+  
+  h3("State Monetary Utilization"),
+  p("This visualization further emphasizes the total costs of drugs on Medicare by state.
   By comparing this information to population size and drugs used most commonly, policymakers can assess where funds are being used efficently
-on a state level and use this information to develop effective future reforms for Medicare.")
-  
-  
+on a state level and use this information to develop effective future reforms for Medicare."),
+  sidebarLayout(
+    sidebarPanel(
+      radioButtons("sort", "Sort By",
+                   c("Alphabetical" = "alphabetical", "Descending" = "descending", "Ascending" = "asc")),
+      selected = "alphabetical"
+    ), 
+    mainPanel(
+      plotOutput("compare")
+    )
+  )
   
 )
 

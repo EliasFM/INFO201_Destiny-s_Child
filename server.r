@@ -71,7 +71,8 @@ my.server <- function(input, output) {
       
       if (input$rankBy == "bot") {
         datum <- filtered_state %>% arrange_(sort) %>% top_n(-40)
-      }else if (input$rankBy == "top") {
+      }
+      if (input$rankBy == "top") {
         datum <- filtered_state %>% arrange_(sort) %>% top_n(40)
       }
       
@@ -122,6 +123,7 @@ my.server <- function(input, output) {
   state_cost <- reactive({
     if(input$sorted == "alphabetical"){
       silver <- silver_state
+      
       graphed <-  ggplot(silver) + 
         geom_bar(aes(x = nppes_provider_state, y = total_drug_cost), position = position_stack(reverse = TRUE), stat = "identity") +
         coord_flip() + 
@@ -130,13 +132,16 @@ my.server <- function(input, output) {
     }else if(input$sorted == "descending"){
       silver <- silver_state %>% arrange(desc(total_drug_cost))
       silver$nppes_provider_state <- factor(silver$nppes_provider_state, levels = silver$nppes_provider_state[order(silver$total_drug_cost)])
+      
       graphed <-  ggplot(silver) + 
         geom_bar(aes(x = nppes_provider_state, y = total_drug_cost), position = position_stack(reverse = TRUE), stat = "identity") +
         coord_flip() + 
+        
         labs(title = "Total Cost of Medicare Drugs per State", y = "Total Drug Cost ($)", x = "State")
     }else if(input$sorted == "ascending"){
       silver <- silver_state %>% arrange(total_drug_cost)
       silver$nppes_provider_state <- factor(silver$nppes_provider_state, levels = silver$nppes_provider_state[order(silver$total_drug_cost)])
+      
       graphed <-  ggplot(silver) + 
         geom_bar(aes(x = nppes_provider_state, y = total_drug_cost), position = position_stack(reverse = TRUE), stat = "identity") +
         coord_flip() + 

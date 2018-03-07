@@ -12,22 +12,20 @@ library(shiny)
 #needs to be redone, just for framework
 my.ui <- fluidPage( 
   h1('Analysis of Medicare Drug Pricing'),
-  p('This data demonstrates the differences between generic drug pricing versus specific brand pricing.
-  The data visualizations help insurance companies understand which drugs are reasonably priced versus ones which
-  intentionally raise prices. Through this, policy makers and insurance companies alike can promote good policy
-  and pharmaceutical companies can be held responsible for ethical drug pricing when using government funded health care.
-    By identifying how the distribution of drug prices differs across state lines, policy makers can better utilize research to focus
-    on which states utilize insurance funds most wastefully or perhaps focus on efficient use of funds as a model for future
-    cases.'),
+  p('This data demonstrates the cost imposed by each state and each drug through Medicare health insurance. Medicare health insurance is a federally funded
+program for people who are 65 and older or disabled. It is funded by taxpayer money and falls under the branch of social security measures enacted by the government.
+However, based on the cost imposed versus the population decrease generationally, these social security nets may not be sustainable long term. This data report is relevant because it
+  helps policymakers visualize the costs of Medicare and thus, may have more support for reforming these programs long term. As it stands, reforming these programs is politically 
+    contentious and hurts policymakers chances of re-election.'),
   
   
   p('Some interesting further reading on the topic can be found here:'),
     tags$li(
-      a(href="http://www.latimes.com/business/la-fi-hemophilia-drugs-cost-20180305-story.html","Drug Prices Soar for Rare Diseases")), 
+      a(href="https://www.forbes.com/sites/johnmauldin/2017/04/10/is-our-social-security-sustainable-lets-do-the-math/#789c346f3575","Is Our Social Security Sustainable? Lets Do The Math")), 
     tags$li(
-      a(href="http://www.washingtonpost.com/business/economy/pharma-under-attack-for-drug-prices-started-an-industry-war/2017/12/29/800a3de8-e5bc-11e7-a65d-1ac0fd7f097e_story.html?utm_term=.f0e861b04e15", "Pharma Under Attack for Drug Prices")),
+      a(href="http://www.businessinsider.com/social-security-is-running-out-and-no-one-will-like-the-solution-2017-7", "Social Security Is Running Out")),
     tags$li(
-      a(href="http://www.npr.org/sections/health-shots/2018/02/13/585183996/trumps-budget-proposal-swings-at-drug-prices-but-may-land-only-a-glancing-blow", "Trump Proposes Lowering Drug Prices")),
+      a(href="https://www.reuters.com/article/us-column-miller-socialsecurity/u-s-social-security-reform-the-clock-is-ticking-idUSKBN17M1BI", "U.S. Social Security reform: the clock is ticking")),
   
   titlePanel("Name"),
   

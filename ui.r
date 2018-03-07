@@ -63,6 +63,7 @@ states_dropdown <-
     "ZZ"
   )
 
+
 my.ui.state.drugs <- fluidPage(
   titlePanel('Project Name'),
   h3('Bethany Johnson, Elias Mendel, Karissa Shapard, Kevin Zhang'),
@@ -87,6 +88,7 @@ my.ui.state.drugs <- fluidPage(
     <li><a href="https://www.npr.org/sections/health-shots/2018/02/13/585183996/trumps-budget-proposal-swings-at-drug-prices-but-may-land-only-a-glancing-blow">https://www.npr.org/sections/health-shots/2018/02/13/585183996/trumps-budget-proposal-swings-at-drug-prices-but-may-land-only-a-glancing-blow</a></li>
     </ul><br>'
   ),
+
   
   sidebarLayout(
     sidebarPanel(
@@ -119,6 +121,7 @@ my.ui.state.drugs <- fluidPage(
   
 )
 
+
 my.ui.state.money <- fluidPage(
   
   
@@ -130,3 +133,4 @@ shinyUI(navbarPage( "Medicare Utilization",
                     tabPanel("State Generic Drug Usage", my.ui.state.drugs),
                     tabPanel("State Monetary Utilization", my.ui.state.money)
 ))
+

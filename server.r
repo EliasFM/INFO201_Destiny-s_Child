@@ -20,6 +20,8 @@ library(plotly)
 
 my.server <- function(input, output) {
 
+  
+  #First visualization tab
 
   output$dt <- renderDataTable({
     # Render total data table directly. Just group and sum the claim count.
@@ -89,6 +91,18 @@ my.server <- function(input, output) {
     
   }, height = 650)
 
+  
+  #Second tab of visualization
+  silver_state <- fread("./Data/silver_state.csv")
+  silver <- silver_state %>% arrange(desc(total_drug_cost))
+  silver$nppes_provider_state <- factor(silver$nppes_provider_state, levels = silver$nppes_provider_state[order(silver$total_drug_cost)])
+  
+  output$compare <- renderPlot({
+    ggplot(silver) + 
+      geom_bar(aes(x = nppes_provider_state, y = total_drug_cost), position = position_stack(reverse = TRUE), stat = "identity") +
+      coord_flip() + 
+      labs(title = "Total Cost of Drugs per State", y = "Total Drug Cost", x = "State")
+  })
 }
 
 shinyServer(my.server)

@@ -34,19 +34,13 @@ my.ui <- fluidPage(
   sidebarLayout(
     
     sidebarPanel(
-      sliderInput("slide", label = h3("SlideName"), min = 0, 
-                  max = 100, value = c(0, 100)
-      ),
-      
-      radioButtons("radio", label = h3("RadioName"),
-                   choices = list("1" = 1, "2" = 2, "3" = 3, "4" = 4), 
-                   selected = 1
-      )
+        
+
       
     ),
     
     mainPanel(
-      plotOutput("PlotName")
+      plotOutput("compare")
     )
   )
   

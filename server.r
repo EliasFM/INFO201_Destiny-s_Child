@@ -16,29 +16,19 @@ library(shiny)
 dollarConv <- function(cost){
   final <- as.numeric(gsub('[$,]', '', cost))
 }
-brand_vs_drug <- working_data %>%
-  select(drug_name, generic_name, bene_count, total_drug_cost) %>%
-  group_by(drug_name, generic_name) %>%
-  summarize(bene_count = sum(bene_count) , total_drug_cost = sum(dollarConv(total_drug_cost))) %>%
-  arrange(generic_name)
-
-silver_populations_city <- working_data %>%
-  select(nppes_provider_city, nppes_provider_state, bene_count, total_claim_count, total_day_supply, total_drug_cost) %>%
-  group_by(nppes_provider_city, nppes_provider_state) %>%
-  summarise(bene_count = sum(bene_count) , total_claim_count = sum(total_claim_count), total_day_supply = sum(total_day_supply), total_drug_cost = sum(dollarConv(total_drug_cost))) %>%
-  arrange(nppes_provider_state)
-
-silver_populations_state <- working_data %>%
-  select(nppes_provider_state, bene_count, total_claim_count, total_day_supply, total_drug_cost) %>%
-  group_by(nppes_provider_state) %>%
-  summarise(bene_count = sum(bene_count) , total_claim_count = sum(total_claim_count), total_day_supply = sum(total_day_supply), total_drug_cost = sum(dollarConv(total_drug_cost))) %>%
-  arrange(nppes_provider_state)
-
+# 
+# silver_populations_state <- working_data %>%
+#   select(nppes_provider_state, bene_count, total_claim_count, total_day_supply, total_drug_cost) %>%
+#   group_by(nppes_provider_state) %>%
+#   summarise(bene_count = sum(bene_count) , total_claim_count = sum(total_claim_count), total_day_supply = sum(total_day_supply), total_drug_cost = sum(dollarConv(total_drug_cost))) %>%
+#   arrange(nppes_provider_state)
+# 
+# fwrite(silver_populations_state, "./Data/silver_state.csv")
+# 
 
 #basic framework, needs to be completely cleared out and rewritten
 my.server <- function(input, output) {
-  working_data <- fread("./Data/working_data.cv")
-  
+
 
   var1 <- reactive({
     
@@ -49,8 +39,11 @@ my.server <- function(input, output) {
     
   })
   
-  output$proteinComparison <- renderPlot(height = 900, width = 800, {
-    
+
+  
+  output$compare <- renderPlot(height = 600, width = 600, {
+    ggplot(silver_populations_state, aes(x = nppes_provider_state, y = total_drug_cost)) + geom_col() +
+        coord_flip() + labs(title = "Total Cost of Drugs per State", x = "Total Drug Cost", y = "State")
   })
   
   

@@ -136,9 +136,9 @@ my.ui.state.money <- fluidPage(
   ##State Monetary Utilization
 
 h3("State Monetary Utilization"),
-p("This visualization further emphasizes the total costs of drugs on Medicare by state. Through this,
-  By comparing this information to population size and drugs used, policymakers can assess where funds are being used efficently
-  as a basis for future reforms.")
+p("This visualization further emphasizes the total costs of drugs on Medicare by state.
+  By comparing this information to population size and drugs used most commonly, policymakers can assess where funds are being used efficently
+on a state level and use this information to develop effective future reforms for Medicare.")
   
   
   

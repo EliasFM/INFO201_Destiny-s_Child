@@ -93,10 +93,12 @@ my.ui.state.drugs <- fluidPage(
       selectInput("state", "State or territory:", states_dropdown),
       radioButtons("chart", "Select a format",
                    c("Chart" = "chart", "Table" = "table")),
-      radioButtons(
-        "sort",
-        "Sort by:",
-        choices = list("Ascending" = "asc", "Descending" = "desc")
+      conditionalPanel(condition = "input.chart == 'chart'",
+                       radioButtons(
+                         "sort",
+                         "Sort by:",
+                         choices = list("Ascending" = "asc", "Descending" = "desc")
+                       )
       ),
       conditionalPanel(condition = "input.chart == 'chart'",
                        radioButtons(

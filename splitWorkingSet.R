@@ -4,19 +4,14 @@ library(data.table)
 library(shiny)
 library(rlang)
 
-#if you want to reedit the main data set
-# data <- fread("./data/r.csv")
-# working_data <- data %>%
-# select(nppes_provider_city, nppes_provider_state, drug_name, generic_name, bene_count, total_claim_count, total_day_supply, total_drug_cost, total_claim_count_ge65, total_day_supply_ge65, total_drug_cost_ge65, bene_count_ge65)
-# fwrite(working_data, "./data/working_data.csv")
 
-# Elias
+# Create working_data.csv
 data <- fread("./Data/medicaredata.csv")
 working_data <- data %>%
-select(nppes_provider_city, nppes_provider_state, drug_name, generic_name, bene_count, total_claim_count, total_day_supply, total_drug_cost, total_claim_count_ge65, total_day_supply_ge65, total_drug_cost_ge65, bene_count_ge65)
+  select(nppes_provider_city, nppes_provider_state, drug_name, generic_name, bene_count, total_claim_count, total_day_supply, total_drug_cost, total_claim_count_ge65, total_day_supply_ge65, total_drug_cost_ge65, bene_count_ge65)
 fwrite(working_data, "./Data/working_data.csv")
 
-
+# Create brand_vs_drug.csv
 dollarConv <- function(cost){
   final <- as.numeric(gsub('[$,]', '', cost))
 }
@@ -31,8 +26,8 @@ brand_vs_drug <- working_data %>%
 fwrite(brand_vs_drug, "./Data/brand_vs_drug.csv")
 
 
-# Kevin
-# INSTRUCTIONS: RUN THIS ONE TIME AFTER YOU GENERATE WORKING_DATA
+
+# INSTRUCTIONS: RUN THIS ONE TIME AFTER YOU GENERATE working_data.csv
 # Creates: /data/state/[state].csv
 # This significantly accelerates initial load times
 acs_d <- read.csv(file='data/working_data.csv', header=TRUE)

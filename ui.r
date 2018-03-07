@@ -92,7 +92,12 @@ my.ui.state.drugs <- fluidPage(
     a(href="https://www.ssa.gov/policy/docs/ssb/v70n3/v70n3p111.html", "The Future Financial Status of the Social Security Programs"))
   ),
 
-
+## State Generic Drug Usage
+h3('State Generic Drug Usage'),
+p("This visualization helps policymakers understand the most commonly used drugs in a given state. Through this,
+  policymakers can compare which drugs are most commonly used to the costs imposed by these said drugs. This can help 
+  policymakers better understand which drugs burden the Medicare social security program most heavily so they may focus on those drugs as 
+  part of their policy reform"),
   
   sidebarLayout(
     sidebarPanel(
@@ -127,7 +132,13 @@ my.ui.state.drugs <- fluidPage(
 
 
 my.ui.state.money <- fluidPage(
-  
+
+  ##State Monetary Utilization
+
+h3("State Monetary Utilization"),
+p("This visualization further emphasizes the total costs of drugs on Medicare by state. Through this,
+  By comparing this information to population size and drugs used, policymakers can assess where funds are being used efficently
+  as a basis for future reforms.")
   
   
   

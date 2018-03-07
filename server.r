@@ -19,48 +19,13 @@ library(plotly)
 
 
 function(input, output) {
-  # Filter out everything except the state wanted.
-  # translationTable <- c(
-  #   "nppes_provider_city" = "City",
-  #   "nppes_provider_state" = "State",
-  #   "drug_name" = "Brand",
-  #   "generic_name" = "Generic",
-  #   "bene_count" = "Bct",
-  #   "total_claim_count" = "Tcc",
-  #   "total_day_supply" = "Tds",
-  #   "total_drug_cost" = "Tdc",
-  #   "total_claim_count_ge65" = "Tcc65",
-  #   "total_day_supply_ge65" = "Tds65",
-  #   "total_drug_cost_ge65" = "Tdc65",
-  #   "bene_count_ge65" = "Bc65"
-  # )
-  # 
-  # translationTable <-
-  #   c(
-  #     "X",
-  #     "City",
-  #     "State",
-  #     "Brand",
-  #     "Generic",
-  #     "Bct",
-  #     "Tcc",
-  #     "Tds",
-  #     "Tdc",
-  #     "Tcc65",
-  #     "Tds65",
-  #     "Tdc65",
-  #     "Bc65"
-  #   )
-  
+
   output$dt <- renderDataTable({
     # Render total data table directly. Just group and sum the claim count.
     
     filtered_state <-
-      read.csv(file = paste0('data/state/', input$state, '.csv'),
+      fread(file = paste0('data/state/', input$state, '.csv'),
                header = TRUE)
-    # filtered_state <- filtered_state %>%
-    #   group_by(generic_name) %>%
-    #   summarise(claim_count = sum(total_claim_count))
     return(as.data.frame(filtered_state))
   })
   
@@ -79,12 +44,9 @@ function(input, output) {
       }
       
       filtered_state <-
-        read.csv(file = paste0('data/state/', input$state, '.csv'),
+        fread(file = paste0('data/state/', input$state, '.csv'),
                  header = TRUE)
       incProgress(0.75, detail = "Loaded data, sorting now")
-      filtered_state <- filtered_state %>%
-        group_by(generic_name) %>%
-        summarise(claim_count = sum(total_claim_count))
       incProgress(0.9, detail = "Rendering plot")
       
       # Use NSE here for arrange_() - see above

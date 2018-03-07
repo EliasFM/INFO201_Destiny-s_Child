@@ -1,4 +1,4 @@
-# setwd("/Users/Elias/Documents/UW/INFO_201/Assignments/INFO201_Destiny-s_Child")
+#setwd("/Users/Elias/Documents/UW/INFO_201/Assignments/INFO201_Destiny-s_Child")
 # getwd()
 
 if(!require(dplyr))install.packages("dplyr", repos = "http://cran.us.r-project.org")
@@ -30,7 +30,7 @@ my.ui <- fluidPage(
     ),
     
     mainPanel(
-      plotOutput("PlotName")
+      plotOutput("a")
     )
   )
 )
@@ -55,12 +55,12 @@ my.ui2 <- fluidPage(
     ),
     
     mainPanel(
-      plotOutput("PlotName")
+      plotOutput("a")
     )
   )
 )
 
 shinyUI(navbarPage( "Medicare Utilization",
-                    tabPanel("Brand vs Generic", my.ui),
-                    tabPanel("State Utilization", my.ui2)
+                    tabPanel("State Generic Drug Usage", my.ui),
+                    tabPanel("State Monetary Utilization", my.ui2)
 ))

@@ -1,46 +1,130 @@
-# setwd("/Users/Elias/Documents/UW/INFO_201/Assignments/INFO201_Destiny-s_Child")
-# getwd()
+states_dropdown <-
+  c(
+    "AA",
+    "AE",
+    "AK",
+    "AL",
+    "AP",
+    "AR",
+    "AS",
+    "AZ",
+    "CA",
+    "CO",
+    "CT",
+    "DC",
+    "DE",
+    "FL",
+    "GA",
+    "GU",
+    "HI",
+    "IA",
+    "ID",
+    "IL",
+    "IN",
+    "KS",
+    "KY",
+    "LA",
+    "MA",
+    "MD",
+    "ME",
+    "MI",
+    "MN",
+    "MO",
+    "MP",
+    "MS",
+    "MT",
+    "NC",
+    "ND",
+    "NE",
+    "NH",
+    "NJ",
+    "NM",
+    "NV",
+    "NY",
+    "OH",
+    "OK",
+    "OR",
+    "PA",
+    "PR",
+    "RI",
+    "SC",
+    "SD",
+    "TN",
+    "TX",
+    "UT",
+    "VA",
+    "VI",
+    "VT",
+    "WA",
+    "WI",
+    "WV",
+    "WY",
+    "XX",
+    "ZZ"
+  )
 
-if(!require(dplyr))install.packages("dplyr", repos = "http://cran.us.r-project.org")
-if(!require(ggplot2))install.packages("ggplot2", repos = "http://cran.us.r-project.org")
-if(!require(shiny))install.packages("shiny", repos = "http://cran.us.r-project.org")
-library(dplyr)
-library(ggplot2)
-library(shiny)
 
-
-#needs to be redone, just for framework
-my.ui <- fluidPage( 
-  h1('Analysis of Medicare Drug Pricing'),
-  p('This data demonstrates the differences between generic drug pricing versus specific brand pricing.
-  The data visualizations help insurance companies understand which drugs are reasonably priced versus ones which
-  intentionally raise prices. Through this, policy makers and insurance companies alike can promote good policy
-  and pharmaceutical companies can be held responsible for ethical drug pricing when using government funded health care.
-    By identifying how the distribution of drug prices differs across state lines, policy makers can better utilize research to focus
+my.ui.state.drugs <- fluidPage(
+  titlePanel('Project Name'),
+  h3('Bethany Johnson, Elias Mendel, Karissa Shapard, Kevin Zhang'),
+  p(
+    'This data demonstrates the differences between generic drug pricing versus specific brand pricing.'
+  ),
+  p(
+    'The data visualizations help insurance companies understand which drugs are reasonably priced compared to other drugs that
+    have been intentionally raised in price. Through this, policy makers and insurance companies alike can promote good policy
+    and pharmaceutical companies can be held responsible for ethical drug pricing when using government-funded health care.
+    By identifying how the distribution of drug prices across states, policy makers can better utilize research to focus
     on which states utilize insurance funds most wastefully or perhaps focus on efficient use of funds as a model for future
-    cases.'),
+    cases.'
+  ),
   
   
   p('Some interesting further reading on the topic can be found here:'),
-    tags$li(
-      a(href="http://www.latimes.com/business/la-fi-hemophilia-drugs-cost-20180305-story.html","Drug Prices Soar for Rare Diseases")), 
-    tags$li(
-      a(href="http://www.washingtonpost.com/business/economy/pharma-under-attack-for-drug-prices-started-an-industry-war/2017/12/29/800a3de8-e5bc-11e7-a65d-1ac0fd7f097e_story.html?utm_term=.f0e861b04e15", "Pharma Under Attack for Drug Prices")),
-    tags$li(
-      a(href="http://www.npr.org/sections/health-shots/2018/02/13/585183996/trumps-budget-proposal-swings-at-drug-prices-but-may-land-only-a-glancing-blow", "Trump Proposes Lowering Drug Prices")),
-  
-  titlePanel("Name"),
+  HTML(
+    '<ul>
+    <li><a href="http://www.latimes.com/business/la-fi-hemophilia-drugs-cost-20180305-story.html">http://www.latimes.com/business/la-fi-hemophilia-drugs-cost-20180305-story.html</a></li>
+    <li><a href="https://www.washingtonpost.com/business/economy/pharma-under-attack-for-drug-prices-started-an-industry-war/2017/12/29/800a3de8-e5bc-11e7-a65d-1ac0fd7f097e_story.html">https://www.washingtonpost.com/business/economy/pharma-under-attack-for-drug-prices-started-an-industry-war/2017/12/29/800a3de8-e5bc-11e7-a65d-1ac0fd7f097e_story.html</a></li>
+    <li><a href="https://www.npr.org/sections/health-shots/2018/02/13/585183996/trumps-budget-proposal-swings-at-drug-prices-but-may-land-only-a-glancing-blow">https://www.npr.org/sections/health-shots/2018/02/13/585183996/trumps-budget-proposal-swings-at-drug-prices-but-may-land-only-a-glancing-blow</a></li>
+    </ul><br>'
+  ),
+
   
   sidebarLayout(
-    
     sidebarPanel(
+<<<<<<< HEAD
         
 
       
+=======
+      selectInput("state", "State or territory:", states_dropdown),
+      radioButtons("chart", "Select a format",
+                   c("Chart" = "chart", "Table" = "table")),
+      conditionalPanel(condition = "input.chart == 'chart'",
+                       radioButtons(
+                         "sort",
+                         "Sort by:",
+                         choices = list("Ascending" = "asc", "Descending" = "desc")
+                       )
+      ),
+      conditionalPanel(condition = "input.chart == 'chart'",
+                       radioButtons(
+                         "rankBy", "Rank by",
+                         choices = list("Top" = "top", "Bottom" = "bot")
+                       )),
+      
+      width = 3,
+      tableOutput("data")
+>>>>>>> 821107525ceb9a45756995e22f383ceae5e67af0
     ),
-    
     mainPanel(
+<<<<<<< HEAD
       plotOutput("compare")
+=======
+      conditionalPanel(condition = "input.chart == 'chart'",  plotOutput("drugstate")),
+      conditionalPanel(condition = "input.chart == 'table'",  dataTableOutput('dt'))
+
+>>>>>>> 821107525ceb9a45756995e22f383ceae5e67af0
     )
   )
   
@@ -48,4 +132,15 @@ my.ui <- fluidPage(
 )
 
 
-shinyUI(my.ui)
+my.ui.state.money <- fluidPage(
+  
+  
+  
+  
+)
+
+shinyUI(navbarPage( "Medicare Utilization",
+                    tabPanel("State Generic Drug Usage", my.ui.state.drugs),
+                    tabPanel("State Monetary Utilization", my.ui.state.money)
+))
+

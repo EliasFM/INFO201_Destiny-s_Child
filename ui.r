@@ -93,16 +93,19 @@ fluidPage(
       selectInput("state", "State or territory:", states_dropdown),
       radioButtons("chart", "Select a format",
                    c("Table" = "table", "Chart" = "chart")),
-      radioButtons(
-        "sort",
-        "Sort by:",
-        choices = list("Ascending" = "asc", "Descending" = "desc")
+      conditionalPanel(condition = "input.chart == 'chart'",
+                       radioButtons(
+                         "sort",
+                         "Sort by:",
+                         choices = list("Ascending" = "asc", "Descending" = "desc")
+                       )
       ),
       conditionalPanel(condition = "input.chart == 'chart'",
                        radioButtons(
                          "rankBy", "Rank by",
                          choices = list("Top" = "top", "Bottom" = "bot")
-                       )),
+                       )
+      ),
       
       width = 3,
       tableOutput("data")

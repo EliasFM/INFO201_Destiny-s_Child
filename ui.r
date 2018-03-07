@@ -79,9 +79,12 @@ my.ui.state.drugs <- fluidPage(
   sidebarLayout(
     sidebarPanel(
 
+      #allows user to choose which state they want to see data for
       selectInput("state", "State or territory:", states_dropdown),
       radioButtons("chart", "Select a format",
                    c("Chart" = "chart", "Table" = "table")),
+      
+      #allows users to choose what order they want the data displayed as
       conditionalPanel(condition = "input.chart == 'chart'",
                        radioButtons(
                          "sort",
@@ -89,6 +92,7 @@ my.ui.state.drugs <- fluidPage(
                          choices = list("Ascending" = "asc", "Descending" = "desc")
                        )
       ),
+      #allows user to choose if they want the bottom or the top of the data chart
       conditionalPanel(condition = "input.chart == 'chart'",
                        radioButtons(
                          "rankBy", "Rank by",
@@ -99,6 +103,8 @@ my.ui.state.drugs <- fluidPage(
       tableOutput("data")
 
     ),
+    
+    #renders the graph from the server
     mainPanel(
 
       conditionalPanel(condition = "input.chart == 'chart'",  plotOutput("drugstate")),
@@ -121,9 +127,11 @@ my.ui.state.money <- fluidPage(
 on a state level and use this information to develop effective future reforms for Medicare."),
   sidebarLayout(
     sidebarPanel(
+      #allows user to choose how they want to see the data displayed
       radioButtons("sorted", "Sort By",
                    c("Alphabetical" = "alphabetical", "Descending" = "descending", "Ascending" = "ascending"))
     ), 
+    #renders graph for the data
     mainPanel(
       plotOutput("compare")
     )
@@ -131,6 +139,8 @@ on a state level and use this information to develop effective future reforms fo
   
 )
 
+#displays the necessary information so that the user knows what all of the data means and
+#the issue we are trying to solve
 my.ui.background <- fluidPage(
   ##Background
   
@@ -160,6 +170,7 @@ my.ui.background <- fluidPage(
   p('Bethany Johnson, Elias Mendel, Karissa Shapard, Kevin Zhang')
   
 )
+#creates the tabs on the html document
 shinyUI(navbarPage( "Medicare Utilization",
                     tabPanel("State Generic Drug Usage", my.ui.state.drugs),
                     tabPanel("State Monetary Utilization", my.ui.state.money),

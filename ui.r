@@ -63,7 +63,7 @@ states_dropdown <-
     "ZZ"
   )
 
-fluidPage(
+my.ui.state.drugs <- fluidPage(
   titlePanel('Project Name'),
   h3('Bethany Johnson, Elias Mendel, Karissa Shapard, Kevin Zhang'),
   p(
@@ -114,4 +114,16 @@ fluidPage(
   )
   
   
-  )
+)
+
+my.ui.state.money <- fluidPage(
+  
+  
+  
+  
+)
+
+shinyUI(navbarPage( "Medicare Utilization",
+                    tabPanel("State Generic Drug Usage", my.ui.state.drugs),
+                    tabPanel("State Monetary Utilization", my.ui.state.money)
+))

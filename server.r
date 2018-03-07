@@ -18,7 +18,7 @@ library(rlang)
 library(plotly)
 
 
-function(input, output) {
+my.server <- function(input, output) {
 
   output$dt <- renderDataTable({
     # Render total data table directly. Just group and sum the claim count.
@@ -87,3 +87,5 @@ function(input, output) {
     
   }, height = 650)
 }
+
+shinyServer(my.server)

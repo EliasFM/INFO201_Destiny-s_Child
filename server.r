@@ -23,6 +23,7 @@ library(shiny)
 library(rlang)
 library(plotly)
 
+
 my.server <- function(input, output) {
   
   #First visualization tab
@@ -135,7 +136,6 @@ my.server <- function(input, output) {
       graphed <-  ggplot(silver) + 
         geom_bar(aes(x = nppes_provider_state, y = total_drug_cost), position = position_stack(reverse = TRUE), stat = "identity") +
         coord_flip() + 
-        
         labs(title = "Total Cost of Medicare Drugs per State", y = "Total Drug Cost ($)", x = "State")
     }else if(input$sorted == "ascending"){
       silver <- silver_state %>% arrange(total_drug_cost)
@@ -151,7 +151,7 @@ my.server <- function(input, output) {
 })
   
   #this draws the bar graph that compares total cost of drugs in each state
-  output$compare <- renderPlot({
+  output$compare <- renderPlot(height = 700, width =600,{
     state_cost()
 
   })

@@ -90,8 +90,7 @@ my.server <- function(input, output) {
             " ranked) Total Claim Counts by Medication for State or Territory ",
             input$state
             
-          ),
-          caption = "source: https://data.cms.gov/Medicare-Part-D/Medicare-Provider-Utilization-and-Payment-Data-201/3z4d-vmhm"
+          ), x = "Generic Drug Name", y = "Claim Count"
           
         ) +
         

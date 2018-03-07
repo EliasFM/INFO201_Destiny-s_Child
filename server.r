@@ -89,15 +89,16 @@ my.server <- function(input, output) {
   }, height = 650)
   
   #Second tab of visualization
+  
   silver_state <- fread("./Data/silver_state.csv")
   
   state_cost <- reactive({
-    if(input$sort == "alphabetical"){
+    if(input$sorted == "alphabetical"){
       silver <- silver_state
-    }else if(input$sort == "descending"){
+    }else if(input$sorted == "descending"){
       silver <- silver_state %>% arrange(desc(total_drug_cost))
       silver$nppes_provider_state <- factor(silver$nppes_provider_state, levels = silver$nppes_provider_state[order(silver$total_drug_cost)])
-    }else{
+    }else if(input$sorted == "ascending"){
       silver <- silver_state %>% arrange(total_drug_cost)
       silver$nppes_provider_state <- factor(silver$nppes_provider_state, levels = silver$nppes_provider_state[order(silver$total_drug_cost)])
     }
@@ -105,7 +106,8 @@ my.server <- function(input, output) {
   })
   
   output$compare <- renderPlot({
-    ggplot(silver) + 
+    
+    ggplot(state_cost()) + 
       geom_bar(aes(x = nppes_provider_state, y = total_drug_cost), position = position_stack(reverse = TRUE), stat = "identity") +
       coord_flip() + 
       labs(title = "Total Cost of Drugs per State", y = "Total Drug Cost", x = "State")

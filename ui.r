@@ -118,9 +118,8 @@ my.ui.state.money <- fluidPage(
 on a state level and use this information to develop effective future reforms for Medicare."),
   sidebarLayout(
     sidebarPanel(
-      radioButtons("sort", "Sort By",
-                   c("Alphabetical" = "alphabetical", "Descending" = "descending", "Ascending" = "asc")),
-      selected = "alphabetical"
+      radioButtons("sorted", "Sort By",
+                   c("Alphabetical" = "alphabetical", "Descending" = "descending", "Ascending" = "ascending"))
     ), 
     mainPanel(
       plotOutput("compare")

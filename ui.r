@@ -174,7 +174,9 @@ my.ui.background <- fluidPage(
     poicymakers can better understand the costs imposed per person in a given state, region or city. This would help policymakers focus in on efficient reform for the program through a public health lens. Furthermore,
     claim count compared to rates of diseases could reflect which states are most unhealthy or which states prescribe drugs more liberally. Applying the Medicare data in cross-comparative analyses with relevant population, health
     age, gender, racial or even socio-economic data would help policymakers and manufacturers better understand and appeal to their audiences/constituents."),
-  
+  h3("Source"),
+  p("The data was sourced from:", a(href = "https://data.cms.gov/Medicare-Part-D/Medicare-Provider-Utilization-and-Payment-Data-201/3z4d-vmhm",
+                                    "Center for Medicare and Medicade Services")),
   h3("Credits"),
   p('Bethany Johnson, Elias Mendel, Karissa Shapard, Kevin Zhang')
   

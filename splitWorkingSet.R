@@ -16,7 +16,8 @@ library(rlang)
 library(data.table)
 
 #This creates the datasets that will be used in the shiny app from the original datset.
-# Please download data from
+# Please download the full dataset from "https://data.cms.gov/Medicare-Part-D/Medicare-Provider-Utilization-and-Payment-Data-201/3z4d-vmhm"
+# Now rename it to medicaredata.csv and place it under the Data folder
 # Create working_data.csv
 data <- fread("./Data/medicaredata.csv")
 working_data <- data %>%

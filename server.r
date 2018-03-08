@@ -60,7 +60,7 @@ my.server <- function(input, output) {
       
       #filter out state information
       filtered_state <-
-        fread(file = paste0('data/state/', input$state, '.csv'),
+        fread(file = paste0('Data/state/', input$state, '.csv'),
               header = TRUE)
       
       incProgress(0.75, detail = "Loaded data, sorting now")

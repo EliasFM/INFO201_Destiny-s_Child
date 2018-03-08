@@ -39,7 +39,7 @@ fwrite(silver_populations_state, "./Data/silver_state.csv")
 # Creates: /data/state/[state].csv
 # This significantly accelerates initial load times
 dumpToFile <- function (state) {
-  filename = paste0('data/state/', state, '.csv')
+  filename = paste0('Data/state/', state, '.csv')
   # Filter one state only and write to csv
   filtered_state = working_data %>% 
     filter(nppes_provider_state == state) %>%

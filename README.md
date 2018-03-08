@@ -11,7 +11,7 @@ This data helps policymakers and constituents alike understand the sustainabilit
 Based on the visualizations, there are several ways in which the data could be utilized more meaningfully for future cases. By comparing the population size of Medicare beneficiaries to total drug cost, policymakers can better understand the costs imposed per person in a given state, region or city. This would help policymakers focus in on efficient reform for the program through a public health lens. Furthermore, claim count compared to rates of diseases could reflect which states are most unhealthy or which states prescribe drugs more liberally. Applying the Medicare data in cross-comparative analyses with relevant population, health, age, gender, racial or even socio-economic data would help policymakers and manufacturers better understand and appeal to their audiences/constituents."),
 
 ### Source
-This data was sourced from: [Center for Medicare and Medicaid Services](https://data.cms.gov/Medicare-Part-D/Medicare-Provider-Utilization-and-Payment-Data-201/3z4d-vmhm). It's for the year 2015.
+This data was sourced from [Center for Medicare and Medicaid Services](https://data.cms.gov/Medicare-Part-D/Medicare-Provider-Utilization-and-Payment-Data-201/3z4d-vmhm) for the year 2015.
 
 
 # Setting up the application

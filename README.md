@@ -16,7 +16,7 @@ This data was sourced from: [Center for Medicare and Medicaid Services](https://
 
 # Setting up the application
 
-Because of file sizes, we haven't included the original data set that we used in this github repository. If you wish to explore the original data or replicate our set up, please follow these steps:
+Because of file sizes, we haven't included the original data set that we used in this github repository. If you wish to explore the original data or replicate our set up, please follow these steps: (Be warned, the dataset is 2.8 gb with 24.5 million rows and 21 columns)
 1. Go to https://data.cms.gov/Medicare-Part-D/Medicare-Provider-Utilization-and-Payment-Data-201/3z4d-vmhm
 2. Download it in the Data folder, as medicaredata.csv
 3. run splitWorkingSet.R

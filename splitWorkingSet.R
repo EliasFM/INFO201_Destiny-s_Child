@@ -15,6 +15,8 @@ library(shiny)
 library(rlang)
 library(data.table)
 
+#This creates the datasets that will be used in the shiny app from the original datset.
+# Please download data from
 # Create working_data.csv
 data <- fread("./Data/medicaredata.csv")
 working_data <- data %>%

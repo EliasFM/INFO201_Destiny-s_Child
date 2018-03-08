@@ -33,7 +33,7 @@ my.server <- function(input, output) {
     
     #filter out states from the data
     filtered_state <-
-      fread(file = paste0('data/state/', input$state, '.csv'),
+      fread(file = paste0('Data/state/', input$state, '.csv'),
             header = TRUE)
     
     return(as.data.frame(filtered_state))

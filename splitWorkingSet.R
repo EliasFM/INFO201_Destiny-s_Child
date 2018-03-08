@@ -29,7 +29,7 @@ dollarConv <- function(cost){
 silver_populations_state <- working_data %>%
   select(nppes_provider_state, bene_count, total_claim_count, total_day_supply, total_drug_cost) %>%
   group_by(nppes_provider_state) %>%
-  summarise(bene_count = sum(bene_count) , total_claim_count = sum(total_claim_count), total_day_supply = sum(total_day_supply), total_drug_cost = sum(dollarConv(total_drug_cost/1,000,000))) %>%
+  summarise(bene_count = sum(bene_count) , total_claim_count = sum(total_claim_count), total_day_supply = sum(total_day_supply), total_drug_cost = sum(dollarConv(total_drug_cost))) %>%
   arrange(nppes_provider_state)
 fwrite(silver_populations_state, "./Data/silver_state.csv")
 
